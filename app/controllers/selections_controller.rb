@@ -6,7 +6,7 @@ class SelectionsController < ApplicationController
 
     
     def create
-        @selection = Selection.create(family_params)
+        @selection = Selection.create(selection_params)
         if @selection.valid?
           render json: @selection, status: 201
         else
@@ -20,20 +20,20 @@ class SelectionsController < ApplicationController
     end
     
     def update
-        @family = Family.find(params[:id])
-        @family.update(family_params)
-        render json: @family
+        @selection = Selection.find(params[:id])
+        @selection.update(selection_params)
+        render json: @selection
     end
     
     def destroy
-          @family = Family.find(params[:id])
-          @family.destroy
-          render json: {message: "Your Genus has been deleted", family: @family}
+          @selection = Selection.find(params[:id])
+          @selection.destroy
+          render json: {message: "Your Genus has been deleted", selection: @selection}
     end
     
       private
     
-    def family_params
-        params.permit(:name)
+    def selection_params
+        params.permit(:user_id, :park_id)
     end
 end
