@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_18_194943) do
+ActiveRecord::Schema.define(version: 2020_09_30_233606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,19 @@ ActiveRecord::Schema.define(version: 2020_09_18_194943) do
     t.text "description", null: false
     t.text "location", null: false
     t.string "image", default: "https://media.cntraveler.com/photos/5ebeef63f52f4c0911cac483/16:9/w_2560%2Cc_limit/GrandCanyonNationalPark-2020-GettyImages-858637934.jpg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "selections", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "park_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

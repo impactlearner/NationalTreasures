@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :selections
+  resources :users
   namespace :api do
     namespace :v1 do
       get 'parks/index'
